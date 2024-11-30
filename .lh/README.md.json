@@ -1,0 +1,26 @@
+{
+    "sourceFile": "README.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1732294800843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732458669671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-mock chain ganache-cli\n\\ No newline at end of file\n+ganache-cli\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732458677089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-ganache-cli\n\\ No newline at end of file\n+ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1732294800843,
+            "name": "Commit-0",
+            "content": "mock chain ganache-cli"
+        }
+    ]
+}

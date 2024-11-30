@@ -1,0 +1,302 @@
+{
+    "sourceFile": "src/main.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 71,
+            "patches": [
+                {
+                    "date": 1732032206718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732032335451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,6 @@\n use ethers::prelude::*;\n+use dotenv::dotenv;\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732032381881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = \"0xYourContractAddress\".parse::<Address>()?;\n+    let address = dotenv.parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032389326,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv.parse::<Address>()?;\n+    let address = dotenv::from_path(\"dotenv\").parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032405088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"dotenv\").parse::<Address>()?;\n+    let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032427723,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n use ethers::prelude::*;\n-use dotenv::dotenv;\n+use dotenv;\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732032437316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n+    let address = dotenv::from_path(\"dotenv\").unwrap().parse_to::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032513018,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,12 @@\n use ethers::prelude::*;\n use dotenv;\n+use anyhow;\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"dotenv\").unwrap().parse_to::<Address>()?;\n+    let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032530407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n use ethers::prelude::*;\n use dotenv;\n-use anyhow;\n+use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<()> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732032535767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n-async fn main() -> Result<()> {\n+async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n"
+                },
+                {
+                    "date": 1732032555784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n+    let address = dotenv::from_path(\"dotenv\").unwrap().parse_to::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032563513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n-async fn main() -> Result<(),Error> {\n+async fn main() -> Result<(),> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"dotenv\").unwrap().parse_to::<Address>()?;\n+    let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032585489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n-async fn main() -> Result<(),> {\n+async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"dotenv\").unwrap().parse::<Address>()?;\n+    let address = dotenv::from_path(\"./dotenv\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032637438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::from_path(\"./dotenv\").unwrap().parse::<Address>()?;\n+    let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732032859472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n-    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n+    let provider = Provider::<Http>::try_from(\"https://::var(\"pubkey\").unwrap()\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n"
+                },
+                {
+                    "date": 1732032912040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n-    let provider = Provider::<Http>::try_from(\"https://::var(\"pubkey\").unwrap()\")?;\n+    let provider = Provider::<Http>::try_from(\"https://optimistic.etherscan.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n"
+                },
+                {
+                    "date": 1732032930898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n-    let provider = Provider::<Http>::try_from(\"https://optimistic.etherscan.io\")?;\n+    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n"
+                },
+                {
+                    "date": 1732033027576,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n-\n+    println!(\"Token Event Detected: {:?}\", log);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n     }\n \n"
+                },
+                {
+                    "date": 1732033034104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n-    println!(\"Token Event Detected: {:?}\", log);\n+    println!(\"Token Event Detected: {:?}\", &log);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n     }\n \n"
+                },
+                {
+                    "date": 1732033042625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n-    println!(\"Token Event Detected: {:?}\", &log);\n+    println!(\"Token Event Detected: {:?}\", &logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n     }\n \n"
+                },
+                {
+                    "date": 1732033064284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-\n+    provider\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n-    println!(\"Token Event Detected: {:?}\", &logs);\n+    println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n     }\n \n"
+                },
+                {
+                    "date": 1732033071086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider\n+    provider.get_balance(from, block)\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033086066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider.get_balance(from, block)\n+    provider.\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033107698,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider.\n+    provider.get_accounts()\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033120260,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider.get_accounts()\n+    provider.get_accounts();\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033126766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider.get_accounts();\n+\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033133208,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+use ethers::prelude::*;\n+use dotenv;\n+use anyhow::Error;\n+\n+#[tokio::main]\n+async fn main() -> Result<(),Error> {\n+    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n+    let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n+\n+    let logs =     provider.get_accounts().await?;\n+    println!(\"Token Event Detected: {:?}\", logs);\n+    for log in logs {\n+        println!(\"Token Event Detected: {:?}\", log);\n+    }\n+\n+    Ok(())\n+}\n"
+                },
+                {
+                    "date": 1732033138504,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,25 +6,8 @@\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n \n-    let logs =     provider.get_accounts().await?;\n-    println!(\"Token Event Detected: {:?}\", logs);\n-    for log in logs {\n-        println!(\"Token Event Detected: {:?}\", log);\n-    }\n-\n-    Ok(())\n-}\n-use ethers::prelude::*;\n-use dotenv;\n-use anyhow::Error;\n-\n-#[tokio::main]\n-async fn main() -> Result<(),Error> {\n-    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033153652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-\n+    provider.get_accounts();\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033171704,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider.get_accounts();\n+    provider.get_accounts(vec![address]);\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033189407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n-    provider.get_accounts(vec![address]);\n+\n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n     println!(\"Token Event Detected: {:?}\", logs);\n     for log in logs {\n         println!(\"Token Event Detected: {:?}\", log);\n"
+                },
+                {
+                    "date": 1732033268216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,14 @@\n use ethers::prelude::*;\n-use dotenv;\n-use anyhow::Error;\n \n #[tokio::main]\n-async fn main() -> Result<(),Error> {\n-    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let address = dotenv::var(\"pubkey\").unwrap().parse::<Address>()?;\n+async fn main() -> Result<()> {\n+    let provider = Provider::<Http>::try_from(\"https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID\")?;\n+    let address = \"0xContractAddress\".parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n-    println!(\"Token Event Detected: {:?}\", logs);\n+\n     for log in logs {\n-        println!(\"Token Event Detected: {:?}\", log);\n+        println!(\"New Token Detected: {:?}\", log);\n     }\n-\n     Ok(())\n }\n"
+                },
+                {
+                    "date": 1732033278991,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,17 @@\n use ethers::prelude::*;\n+use dotenv;\n+use anyhow::Error;\n \n #[tokio::main]\n-async fn main() -> Result<()> {\n+async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID\")?;\n     let address = \"0xContractAddress\".parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n         println!(\"New Token Detected: {:?}\", log);\n     }\n+\n     Ok(())\n }\n"
+                },
+                {
+                    "date": 1732033315744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID\")?;\n-    let address = \"0xContractAddress\".parse::<Address>()?;\n+    let address = dotenv.parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732033323697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n     let provider = Provider::<Http>::try_from(\"https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID\")?;\n-    let address = dotenv.parse::<Address>()?;\n+    let address = dotenv::var(\"pubkey\").parse::<Address>()?;\n \n     let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n \n     for log in logs {\n"
+                },
+                {
+                    "date": 1732033363483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,15 +3,9 @@\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n-    let provider = Provider::<Http>::try_from(\"https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID\")?;\n-    let address = dotenv::var(\"pubkey\").parse::<Address>()?;\n-\n-    let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n-\n-    for log in logs {\n-        println!(\"New Token Detected: {:?}\", log);\n-    }\n-\n+    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n+    let block_number = provider.get_block_number().await?;\n+    println!(\"Current Block Number on Optimism: {:?}\", block_number);\n     Ok(())\n }\n"
+                },
+                {
+                    "date": 1732033390256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,16 @@\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n+    // ตั้งค่าการเชื่อมต่อกับ Optimism\n     let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n     let block_number = provider.get_block_number().await?;\n     println!(\"Current Block Number on Optimism: {:?}\", block_number);\n+\n+    // ตั้งค่าการเชื่อมต่อกับ Arbitrum\n+    let provider_arbitrum = Provider::<Http>::try_from(\"https://arb1.arbitrum.io/rpc\")?;\n+    let arb_block_number = provider_arbitrum.get_block_number().await?;\n+    println!(\"Current Block Number on Arbitrum: {:?}\", arb_block_number);\n+\n     Ok(())\n }\n"
+                },
+                {
+                    "date": 1732280194701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,8 @@\n use ethers::prelude::*;\n-use dotenv;\n+// use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n-    // ตั้งค่าการเชื่อมต่อกับ Optimism\n-    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    let block_number = provider.get_block_number().await?;\n-    println!(\"Current Block Number on Optimism: {:?}\", block_number);\n \n-    // ตั้งค่าการเชื่อมต่อกับ Arbitrum\n-    let provider_arbitrum = Provider::<Http>::try_from(\"https://arb1.arbitrum.io/rpc\")?;\n-    let arb_block_number = provider_arbitrum.get_block_number().await?;\n-    println!(\"Current Block Number on Arbitrum: {:?}\", arb_block_number);\n-\n-    Ok(())\n }\n"
+                },
+                {
+                    "date": 1732280200124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,4 +5,17 @@\n #[tokio::main]\n async fn main() -> Result<(),Error> {\n \n }\n+\n+\n+    // // ตั้งค่าการเชื่อมต่อกับ Optimism\n+    // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n+    // let block_number = provider.get_block_number().await?;\n+    // println!(\"Current Block Number on Optimism: {:?}\", block_number);\n+\n+    // // ตั้งค่าการเชื่อมต่อกับ Arbitrum\n+    // let provider_arbitrum = Provider::<Http>::try_from(\"https://arb1.arbitrum.io/rpc\")?;\n+    // let arb_block_number = provider_arbitrum.get_block_number().await?;\n+    // println!(\"Current Block Number on Arbitrum: {:?}\", arb_block_number);\n+\n+    // Ok(())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1732280214837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,12 @@\n \n #[tokio::main]\n async fn main() -> Result<(),Error> {\n \n+\n+\n+    \n+\n }\n \n \n     // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280223770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,24 +2,23 @@\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n-async fn main() -> Result<(),Error> {\n-\n-\n-\n-    \n-\n+async fn main() -> Result<(), Error> {\n+    let mnemonic = \"gas monster ski craft below illegal discover limit dog bundle bus artefact\";\n+    let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n+    let wallet: LocalWallet = ganache.keys()[0].clone().into();\n+let wallet_address: String = wallet.address().encode_hex();\n+println!(\"Default wallet address: {}\", wallet_address);\n }\n \n+// // ตั้งค่าการเชื่อมต่อกับ Optimism\n+// let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n+// let block_number = provider.get_block_number().await?;\n+// println!(\"Current Block Number on Optimism: {:?}\", block_number);\n \n-    // // ตั้งค่าการเชื่อมต่อกับ Optimism\n\\ No newline at end of file\n-    // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-    // let block_number = provider.get_block_number().await?;\n-    // println!(\"Current Block Number on Optimism: {:?}\", block_number);\n+// // ตั้งค่าการเชื่อมต่อกับ Arbitrum\n+// let provider_arbitrum = Provider::<Http>::try_from(\"https://arb1.arbitrum.io/rpc\")?;\n+// let arb_block_number = provider_arbitrum.get_block_number().await?;\n+// println!(\"Current Block Number on Arbitrum: {:?}\", arb_block_number);\n \n-    // // ตั้งค่าการเชื่อมต่อกับ Arbitrum\n-    // let provider_arbitrum = Provider::<Http>::try_from(\"https://arb1.arbitrum.io/rpc\")?;\n-    // let arb_block_number = provider_arbitrum.get_block_number().await?;\n-    // println!(\"Current Block Number on Arbitrum: {:?}\", arb_block_number);\n-\n-    // Ok(())\n+// Ok(())\n"
+                },
+                {
+                    "date": 1732280256562,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,15 @@\n-use ethers::prelude::*;\n+use ethers::ฐprelude::*;\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     let mnemonic = \"gas monster ski craft below illegal discover limit dog bundle bus artefact\";\n     let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     let wallet: LocalWallet = ganache.keys()[0].clone().into();\n-let wallet_address: String = wallet.address().encode_hex();\n-println!(\"Default wallet address: {}\", wallet_address);\n+    let wallet_address: String = wallet.address().encode_hex();\n+    println!(\"Default wallet address: {}\", wallet_address);\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732280263030,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::ฐprelude::*;\n+use ethers::{relude::*};\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n"
+                },
+                {
+                    "date": 1732280270172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::{relude::*};\n+use ethers::prelude::*;\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n"
+                },
+                {
+                    "date": 1732280276468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::prelude::*;\n+use ethers::{prelude::*,utils::};\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n"
+                },
+                {
+                    "date": 1732280289452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::{prelude::*,utils::};\n+use ethers::{prelude::*,utils::Ganache};\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n@@ -8,8 +8,9 @@\n     let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     let wallet: LocalWallet = ganache.keys()[0].clone().into();\n     let wallet_address: String = wallet.address().encode_hex();\n     println!(\"Default wallet address: {}\", wallet_address);\n+    Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732280310437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n async fn main() -> Result<(), Error> {\n     let mnemonic = \"gas monster ski craft below illegal discover limit dog bundle bus artefact\";\n     let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     let wallet: LocalWallet = ganache.keys()[0].clone().into();\n-    let wallet_address: String = wallet.address().encode_hex();\n+    let wallet_address: String = wallet.address();\n     println!(\"Default wallet address: {}\", wallet_address);\n     Ok(())\n }\n \n"
+                },
+                {
+                    "date": 1732280329769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n async fn main() -> Result<(), Error> {\n     let mnemonic = \"gas monster ski craft below illegal discover limit dog bundle bus artefact\";\n     let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     let wallet: LocalWallet = ganache.keys()[0].clone().into();\n-    let wallet_address: String = wallet.address();\n+    let wallet_address: String = wallet.address().to;\n     println!(\"Default wallet address: {}\", wallet_address);\n     Ok(())\n }\n \n"
+                },
+                {
+                    "date": 1732280432112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,13 @@\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n-    let mnemonic = \"gas monster ski craft below illegal discover limit dog bundle bus artefact\";\n-    let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n-    let wallet: LocalWallet = ganache.keys()[0].clone().into();\n-    let wallet_address: String = wallet.address().to;\n-    println!(\"Default wallet address: {}\", wallet_address);\n+    // Spawn a aanache instance\n+    let ganache = Ganache::new().spawn();\n+    println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n     Ok(())\n+    Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732280489037,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::{prelude::*,utils::Ganache};\n+use ethers::{prelude::*;\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n@@ -7,9 +7,8 @@\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n     Ok(())\n-    Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732280497669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n-use ethers::{prelude::*;\n+use ethers::prelude::*;\n // use dotenv;\n use anyhow::Error;\n+use utils::Ganache;\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n"
+                },
+                {
+                    "date": 1732280509027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::prelude::*;\n+use ethers::utils::Ganache;\n // use dotenv;\n use anyhow::Error;\n use utils::Ganache;\n \n"
+                },
+                {
+                    "date": 1732280659713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n-use ethers::utils::Ganache;\n+use ethers::{utils::Ganache;\n // use dotenv;\n use anyhow::Error;\n-use utils::Ganache;\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n"
+                },
+                {
+                    "date": 1732280666874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-use ethers::{utils::Ganache;\n+use ethers::{preludeutils::Ganache};\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n"
+                },
+                {
+                    "date": 1732280706403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n-use ethers::{preludeutils::Ganache};\n+use ethers::{prelude::*, utils::Ganache};\n // use dotenv;\n use anyhow::Error;\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n-    println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n+    println!(\"HTTP Endpoint: {}\", ganache.endpoint());'\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280715637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,11 @@\n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n-    println!(\"HTTP Endpoint: {}\", ganache.endpoint());'\n+    println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n+\n+    let wal\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280721216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n-    let wal\n+    let wallet : Loca\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280729674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n-    let wallet : Loca\n+    let wallet : LocalWallet\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280745236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n-    let wallet : LocalWallet\n+    let wallet : LocalWallet = ganache.keys()\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280753810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n-    let wallet : LocalWallet = ganache.keys()\n+    let wallet : LocalWallet = ganache.keys()[0].clone().in\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280759127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,10 @@\n     // Spawn a aanache instance\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n-    let wallet : LocalWallet = ganache.keys()[0].clone().in\n+    let wallet : LocalWallet = ganache.keys()[0].clone().into();\n+    let \n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280766597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n-    let \n+    let first_address\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280773491,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n-    let first_address\n+    let first_address = wallet.address()\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280784876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,10 @@\n     let ganache = Ganache::new().spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n-    let first_address = wallet.address()\n+    let first_address = wallet.address();\n+    pri\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732280790947,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n     let first_address = wallet.address();\n-    pri\n+    println!(\"{}\" , first_address)\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732281236654,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,14 +4,14 @@\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n-    let ganache = Ganache::new().spawn();\n+    let ganache = Ganache::new()..spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n     let first_address = wallet.address();\n-    println!(\"{}\" , first_address)\n+    println!(\"{}\" , first_address);\n     Ok(())\n }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n"
+                },
+                {
+                    "date": 1732281245162,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,10 @@\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n-    let ganache = Ganache::new()..spawn();\n+    let me\n+    let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n     let first_address = wallet.address();\n"
+                },
+                {
+                    "date": 1732281254769,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n-    let me\n+    let mnemonic = \"save indoor future fancy middle like scan leaf love burst brother liar\"\n     let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n"
+                },
+                {
+                    "date": 1732281260596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n-    let mnemonic = \"save indoor future fancy middle like scan leaf love burst brother liar\"\n+    let mnemonic = \"save indoor future fancy middle like scan leaf love burst brother liar\";\n     let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n     println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n     let wallet : LocalWallet = ganache.keys()[0].clone().into();\n"
+                },
+                {
+                    "date": 1732281601705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,16 +5,16 @@\n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n     let mnemonic = \"save indoor future fancy middle like scan leaf love burst brother liar\";\n-    let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n-    println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n+        let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n+        println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n \n-    let wallet : LocalWallet = ganache.keys()[0].clone().into();\n-    let first_address = wallet.address();\n-    println!(\"{}\" , first_address);\n-    Ok(())\n-}\n+        let wallet : LocalWallet = ganache.keys()[0].clone().into();\n+        let first_address = wallet.address();\n+        println!(\"{}\" , first_address);\n+        Ok(())\n+    }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n // let block_number = provider.get_block_number().await?;\n"
+                },
+                {
+                    "date": 1732281614110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,16 +4,11 @@\n \n #[tokio::main]\n async fn main() -> Result<(), Error> {\n     // Spawn a aanache instance\n-    let mnemonic = \"save indoor future fancy middle like scan leaf love burst brother liar\";\n-        let ganache = Ganache::new().mnemonic(mnemonic).spawn();\n-        println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n-\n-        let wallet : LocalWallet = ganache.keys()[0].clone().into();\n-        let first_address = wallet.address();\n-        println!(\"{}\" , first_address);\n-        Ok(())\n+    let ganache = Ganache::new().spawn();\n+    println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n+    Ok(())\n     }\n \n // // ตั้งค่าการเชื่อมต่อกับ Optimism\n // let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n"
+                },
+                {
+                    "date": 1732281717707,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,27 @@\n-use ethers::{prelude::*, utils::Ganache};\n-// use dotenv;\n-use anyhow::Error;\n+use ethers::prelude::*;\n+use std::convert::TryFrom;\n \n #[tokio::main]\n-async fn main() -> Result<(), Error> {\n-    // Spawn a aanache instance\n-    let ganache = Ganache::new().spawn();\n-    println!(\"HTTP Endpoint: {}\", ganache.endpoint());\n-    Ok(())\n-    }\n+async fn main() -> Result<(), Box<dyn std::error::Error>> {\n+    // Connect to the Ganache RPC server\n+    let ganache_endpoint = \"http://127.0.0.1:8545\";\n+    let provider = Provider::<Http>::try_from(ganache_endpoint)?;\n \n-// // ตั้งค่าการเชื่อมต่อกับ Optimism\n-// let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n-// let block_number = provider.get_block_number().await?;\n-// println!(\"Current Block Number on Optimism: {:?}\", block_number);\n+    // Print the chain ID to confirm connection\n+    let chain_id = provider.get_chainid().await?;\n+    println!(\"Connected to chain ID: {}\", chain_id);\n \n-// // ตั้งค่าการเชื่อมต่อกับ Arbitrum\n-// let provider_arbitrum = Provider::<Http>::try_from(\"https://arb1.arbitrum.io/rpc\")?;\n-// let arb_block_number = provider_arbitrum.get_block_number().await?;\n-// println!(\"Current Block Number on Arbitrum: {:?}\", arb_block_number);\n+    // Use the first account's private key from Ganache\n+    let private_key = \"0x3a1d16618a9663fd423c2cf8baec185b7da124d13ae9a56d2ec5f53cdd961b99\";\n+    let wallet: LocalWallet = private_key.parse()?;\n \n-// Ok(())\n+    // Display the wallet address\n+    let address = wallet.address();\n+    println!(\"Wallet address: {:?}\", address);\n+\n+    // Query balance for the wallet\n+    let balance = provider.get_balance(address, None).await?;\n+    println!(\"ETH Balance: {}\", ethers::utils::format_units(balance, 18)?);\n+\n+    Ok(())\n+}\n"
+                }
+            ],
+            "date": 1732032206718,
+            "name": "Commit-0",
+            "content": "use ethers::prelude::*;\n\n#[tokio::main]\nasync fn main() -> Result<()> {\n    let provider = Provider::<Http>::try_from(\"https://mainnet.optimism.io\")?;\n    let address = \"0xYourContractAddress\".parse::<Address>()?;\n\n    let logs = provider.get_logs(&Filter::new().address(vec![address])).await?;\n\n    for log in logs {\n        println!(\"Token Event Detected: {:?}\", log);\n    }\n\n    Ok(())\n}\n"
+        }
+    ]
+}

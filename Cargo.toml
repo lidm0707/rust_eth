@@ -1,0 +1,43 @@
+[package]
+name = "rust_eth"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+ethers = { version = "2.0", features = ["rustls","abigen"] }
+tokio = { version = "1", features = ["full"] }
+dotenv = "0.15.0"
+anyhow = "1.0.93"
+eyre = "0.6"
+hex = "0.4"
+reqwest = { version = "0.12.9", features = ["json"] }
+serde_json = "1.0.133"
+
+[[bin]]
+name = "transact"
+path = "src/simple_transaction.rs"
+
+
+
+[[bin]]
+name = "op"
+path = "src/op_gas_tracker.rs"
+
+[[bin]]
+name = "op_1599"
+path = "src/op_gas_eip1599.rs"
+
+
+
+[[bin]]
+name = "eth"
+path = "src/eth_gas_tracker.rs"
+
+
+
+[[bin]]
+name = "deploy"
+path = "src/contract_deploy.rs"
+
+

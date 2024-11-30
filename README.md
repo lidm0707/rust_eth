@@ -1,0 +1,1 @@
+ganache-cli -m "prison fence hidden critic decide disease velvet tool front present dose labor"

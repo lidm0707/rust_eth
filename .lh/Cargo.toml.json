@@ -1,0 +1,178 @@
+{
+    "sourceFile": "Cargo.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 40,
+            "patches": [
+                {
+                    "date": 1732032233791,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1732032260970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,4 +4,6 @@\n edition = \"2021\"\n \n [dependencies]\n ethers = \"2.0\"\n+tokio = { version = \"1\", features = [\"full\"] }\n+\n"
+                },
+                {
+                    "date": 1732032326133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,5 @@\n \n [dependencies]\n ethers = \"2.0\"\n tokio = { version = \"1\", features = [\"full\"] }\n-\n+dotenv = \"0.15.0\"\n"
+                },
+                {
+                    "date": 1732032505987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,4 +6,5 @@\n [dependencies]\n ethers = \"2.0\"\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n+anyhow = \"1.0.93\"\n"
+                },
+                {
+                    "date": 1732294526075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,4 +7,6 @@\n ethers = \"2.0\"\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n+\n+[[]]\n"
+                },
+                {
+                    "date": 1732294544920,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,5 +8,6 @@\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n \n-[[]]\n+[[bin]]\n+name = \n"
+                },
+                {
+                    "date": 1732294551661,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,5 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n \n [[bin]]\n-name = \n+name = \"transac\"\n"
+                },
+                {
+                    "date": 1732294559128,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,6 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n \n [[bin]]\n-name = \"transac\"\n+name = \"transact\"\n+path = \n"
+                },
+                {
+                    "date": 1732294564979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,5 @@\n anyhow = \"1.0.93\"\n \n [[bin]]\n name = \"transact\"\n-path = \n+path = \"src/simple\"\n"
+                },
+                {
+                    "date": 1732294573607,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,5 @@\n anyhow = \"1.0.93\"\n \n [[bin]]\n name = \"transact\"\n-path = \"src/simple\"\n+path = \"src/simplesimple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732294581558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,10 @@\n anyhow = \"1.0.93\"\n \n [[bin]]\n name = \"transact\"\n-path = \"src/simplesimple_transaction.rs\"\n+path = \"src/simple_transaction.rs\"\n+\n+\n+[[bin]]\n+name = \"transact\"\n+path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732294594673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,6 @@\n path = \"src/simple_transaction.rs\"\n \n \n [[bin]]\n-name = \"transact\"\n-path = \"src/simple_transaction.rs\"\n+name = \"deploy\"\n+path = \"src/contract_deploy.rs\"\n"
+                },
+                {
+                    "date": 1732453207574,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n \n+\n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n \n"
+                },
+                {
+                    "date": 1732453216397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,10 @@\n ethers = \"2.0\"\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n+eyre =\"\"\n \n-\n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n \n"
+                },
+                {
+                    "date": 1732453225055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,10 @@\n ethers = \"2.0\"\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n-eyre =\"\"\n+eyre = \"*\"\n+hex = \"\"\n \n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732455536114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,13 @@\n version = \"0.1.0\"\n edition = \"2021\"\n \n [dependencies]\n-ethers = \"2.0\"\n-tokio = { version = \"1\", features = [\"full\"] }\n+ethers = { version = \"2.0\", features = [\"rustls\"] }tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"*\"\n-hex = \"\"\n+hex = \"*\"\n \n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732455545859,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,15 @@\n version = \"0.1.0\"\n edition = \"2021\"\n \n [dependencies]\n-ethers = { version = \"2.0\", features = [\"rustls\"] }tokio = { version = \"1\", features = [\"full\"] }\n+ethers = { version = \"2.0\", features = [\"rustls\"] }\n+tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n-eyre = \"*\"\n-hex = \"*\"\n+eyre = \"0.6\"\n+hex = \"0.4\"\n+tokio = { version = \"1.0\", features = [\"full\"] }\n \n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732709176437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,14 +9,20 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n-tokio = { version = \"1.0\", features = [\"full\"] }\n \n+\n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n \n \n+\n [[bin]]\n+name = \"transact\"\n+path = \"src/simple_transaction.rs\"\n+\n+\n+[[bin]]\n name = \"deploy\"\n path = \"src/contract_deploy.rs\"\n"
+                },
+                {
+                    "date": 1732709184069,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n \n \n \n [[bin]]\n-name = \"transact\"\n+name = \"checkop\"\n path = \"src/simple_transaction.rs\"\n \n \n [[bin]]\n"
+                },
+                {
+                    "date": 1732709192343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \n \n [[bin]]\n name = \"checkop\"\n-path = \"src/simple_transaction.rs\"\n+path = \"src/check_op.rs\"\n \n \n [[bin]]\n name = \"deploy\"\n"
+                },
+                {
+                    "date": 1732709574096,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n \n \n \n [[bin]]\n-name = \"checkop\"\n+name = \"op\"\n path = \"src/check_op.rs\"\n \n \n [[bin]]\n"
+                },
+                {
+                    "date": 1732726287178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n version = \"0.1.0\"\n edition = \"2021\"\n \n [dependencies]\n-ethers = { version = \"2.0\", features = [\"rustls\"] }\n+ethers = { version = \"2.0\", features = [\"abigen\"] }\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n"
+                },
+                {
+                    "date": 1732726293445,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n edition = \"2021\"\n \n [dependencies]\n ethers = { version = \"2.0\", features = [\"abigen\"] }\n+ethers = { version = \"2.0\", features = [\"rustls\"] }\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n"
+                },
+                {
+                    "date": 1732726300249,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n edition = \"2021\"\n \n [dependencies]\n ethers = { version = \"2.0\", features = [\"abigen\"] }\n-ethers = { version = \"2.0\", features = [\"rustls\"] }\n+ethers = { version = \"2.0\", features = [\"rustls\",\"abigen\"] }\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n"
+                },
+                {
+                    "date": 1732726527271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,15 +3,16 @@\n version = \"0.1.0\"\n edition = \"2021\"\n \n [dependencies]\n-ethers = { version = \"2.0\", features = [\"abigen\"] }\n+\n ethers = { version = \"2.0\", features = [\"rustls\",\"abigen\"] }\n tokio = { version = \"1\", features = [\"full\"] }\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n+reqwest = { version = \"0.11\", features = [\"json\"] }\n \n \n [[bin]]\n name = \"transact\"\n"
+                },
+                {
+                    "date": 1732726533479,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n-reqwest = { version = \"0.11\", features = [\"json\"] }\n+reqwest = { version = \"0.12.9\", features = [\"json\"] }\n \n \n [[bin]]\n name = \"transact\"\n"
+                },
+                {
+                    "date": 1732726635014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n-reqwest = { version = \"0.12.9\", features = [\"json\"] }\n+reqwest = \"=0.10.10\"\n \n \n [[bin]]\n name = \"transact\"\n"
+                },
+                {
+                    "date": 1732726697609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,11 +10,11 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n-reqwest = \"=0.10.10\"\n+reqwest = \"0.12.9\"\n+serde_json = \"=1.0.1\"\n \n-\n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n \n"
+                },
+                {
+                    "date": 1732726749395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n reqwest = \"0.12.9\"\n-serde_json = \"=1.0.1\"\n+serde_json = \"1.0.133\"\n \n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732726843596,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,9 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n-reqwest = \"0.12.9\"\n-serde_json = \"1.0.133\"\n+reqwest = { version = \"0.11\", features = [\"json\"] }serde_json = \"1.0.133\"\n \n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732726849345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,10 @@\n dotenv = \"0.15.0\"\n anyhow = \"1.0.93\"\n eyre = \"0.6\"\n hex = \"0.4\"\n-reqwest = { version = \"0.11\", features = [\"json\"] }serde_json = \"1.0.133\"\n+reqwest = { version = \"0.12.9\", features = [\"json\"] }\n+serde_json = \"1.0.133\"\n \n [[bin]]\n name = \"transact\"\n path = \"src/simple_transaction.rs\"\n"
+                },
+                {
+                    "date": 1732763444471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n \n \n [[bin]]\n name = \"op\"\n-path = \"src/check_op.rs\"\n+path = \"src/op_gas_tracker\"\n \n \n [[bin]]\n name = \"deploy\"\n"
+                },
+                {
+                    "date": 1732763486767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n \n \n [[bin]]\n name = \"op\"\n-path = \"src/op_gas_tracker\"\n+path = \"src/op_gas_tracker.rs\"\n \n \n [[bin]]\n name = \"deploy\"\n"
+                },
+                {
+                    "date": 1732763546936,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,4 +27,6 @@\n \n [[bin]]\n name = \"deploy\"\n path = \"src/contract_deploy.rs\"\n+\n+[[]]\n"
+                },
+                {
+                    "date": 1732763553225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,5 +28,6 @@\n [[bin]]\n name = \"deploy\"\n path = \"src/contract_deploy.rs\"\n \n-[[]]\n+[[bin]]\n+name = \"\"\n"
+                },
+                {
+                    "date": 1732763559420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,5 +29,6 @@\n name = \"deploy\"\n path = \"src/contract_deploy.rs\"\n \n [[bin]]\n-name = \"\"\n+name = \"eth\"\n+path = \"src/eth_gas_tracker.rs\"\n"
+                },
+                {
+                    "date": 1732763636926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,7 +28,5 @@\n [[bin]]\n name = \"deploy\"\n path = \"src/contract_deploy.rs\"\n \n-[[bin]]\n-name = \"eth\"\n-path = \"src/eth_gas_tracker.rs\"\n+\n"
+                },
+                {
+                    "date": 1732979377109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,19 @@\n name = \"op\"\n path = \"src/op_gas_tracker.rs\"\n \n \n+\n+\n+\n+\n [[bin]]\n+name = \"eth\"\n+path = \"src/eth_gas_tracker.rs\"\n+\n+\n+\n+[[bin]]\n name = \"deploy\"\n path = \"src/contract_deploy.rs\"\n \n \n"
+                },
+                {
+                    "date": 1732979387156,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,13 +23,13 @@\n [[bin]]\n name = \"op\"\n path = \"src/op_gas_tracker.rs\"\n \n+[[bin]]\n+name = \"op_1\"\n \n \n \n-\n-\n [[bin]]\n name = \"eth\"\n path = \"src/eth_gas_tracker.rs\"\n \n"
+                },
+                {
+                    "date": 1732979392394,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,10 @@\n name = \"op\"\n path = \"src/op_gas_tracker.rs\"\n \n [[bin]]\n-name = \"op_1\"\n+name = \"op_1599\"\n+path = \"op_gas_eip1599\"\n \n \n \n [[bin]]\n"
+                },
+                {
+                    "date": 1732979397751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n path = \"src/op_gas_tracker.rs\"\n \n [[bin]]\n name = \"op_1599\"\n-path = \"op_gas_eip1599\"\n+path = \"src/op_gas_eip1599.rs\"\n \n \n \n [[bin]]\n"
+                }
+            ],
+            "date": 1732032233791,
+            "name": "Commit-0",
+            "content": "[package]\nname = \"rust_eth\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\nethers = \"2.0\"\n"
+        }
+    ]
+}
