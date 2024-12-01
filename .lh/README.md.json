@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1732294800843,
@@ -16,6 +16,30 @@
                 {
                     "date": 1732458677089,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,1 @@\n-ganache-cli\n\\ No newline at end of file\n+ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733067841340,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,3 @@\n+ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n+\r\n+npm install -g solc\r\n"
+                },
+                {
+                    "date": 1733068267256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n npm install -g solc\r\n-ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\n\\ No newline at end of file\n+\r\n+npx solc --bin --abi --optimize -o build SwapPool.sol\r\n"
+                },
+                {
+                    "date": 1733068273545,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n npm install -g solc\r\n-\r\n npx solc --bin --abi --optimize -o build SwapPool.sol\r\n"
+                },
+                {
+                    "date": 1733068692696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,4 @@\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n npm install -g solc\r\n-npx solc --bin --abi --optimize -o build SwapPool.sol\r\n+npx solc --bin --abi --optimize -o src/build SwapPool.sol\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733069641507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,8 @@\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n npm install -g solc\r\n-npx solc --bin --abi --optimize -o src/build SwapPool.sol\n\\ No newline at end of file\n+npx solc --bin --abi --optimize -o src/build SwapPool.sol\r\n+\r\n+\r\n+\r\n+// \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733069655673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,5 +4,6 @@\n npx solc --bin --abi --optimize -o src/build SwapPool.sol\r\n \r\n \r\n \r\n-// \n\\ No newline at end of file\n+// I finish deploy\r\n+// can't swap / and pa\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1732294800843,

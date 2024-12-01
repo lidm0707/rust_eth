@@ -1,0 +1,15 @@
+{
+  "name": "rust_eth",
+  "version": "1.0.0",
+  "description": "ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "solc": "^0.8.28"
+  }
+}

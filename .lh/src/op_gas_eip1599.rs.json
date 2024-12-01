@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 68,
+            "activePatchIndex": 76,
             "patches": [
                 {
                     "date": 1732979361959,
@@ -280,6 +280,38 @@
                 {
                     "date": 1732980648612,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n         Err(error) => {\r\n             // การประเมิน gas ล้มเหลว\r\n             eprintln!(\"Failed to estimate gas: {}\", error);\r\n         }\r\n-    }\r\n+    };\r\n     \r\n \r\n     Ok(())\r\n }\r\n"
+                },
+                {
+                    "date": 1732980885811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(U256::from(21_000)) // Gas limit complex bas is not wei and eth\r\n+        .gas(U256::from()) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732980891801,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(U256::from()) // Gas limit complex bas is not wei and eth\r\n+        .gas(21_000) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732980897950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(21_000) // Gas limit complex bas is not wei and eth\r\n+        .gas(21_000 ) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732980911592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(21_000 ) // Gas limit complex bas is not wei and eth\r\n+        .gas(21_000 as U256) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732980922474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(21_000 as U256) // Gas limit complex bas is not wei and eth\r\n+        .gas(21_000) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732980929068,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(21_000) // Gas limit complex bas is not wei and eth\r\n+        .gas(21_000u64) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732980972606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(21_000u64) // Gas limit complex bas is not wei and eth\r\n+        .gas(21_000 as u64) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
+                },
+                {
+                    "date": 1732981009029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n     let tx = Eip1559TransactionRequest::new()\r\n         .from(from) // Address ที่ส่ง\r\n         .to(to) // Address ที่รับ\r\n         .value(eth_to_wei(1.00)) // ค่า ETH (1 ETH)\r\n-        .gas(21_000 as u64) // Gas limit complex bas is not wei and eth\r\n+        .gas(U256::from()) // Gas limit complex bas is not wei and eth\r\n         .max_priority_fee_per_gas(gwei_to_wei(2)) // Max priority fee (2 GWei)\r\n         .max_fee_per_gas(gwei_to_wei(50)); // Max fee per gas (50 GWei)\r\n \r\n     // แปลง EIP-1559 Transaction เป็น TypedTransaction\r\n"
                 }
             ],
             "date": 1732979361959,

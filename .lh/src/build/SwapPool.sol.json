@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/build/SwapPool.sol",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1733067830420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1733067830420,
+            "name": "Commit-0",
+            "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract SwapPool {\r\n    mapping(address => uint256) public balances;\r\n\r\n    // Deposit ETH into the pool\r\n    function deposit() external payable {\r\n        balances[msg.sender] += msg.value;\r\n    }\r\n\r\n    // Mock Swap Function\r\n    function swap(address recipient, uint256 amount) external {\r\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\r\n        balances[msg.sender] -= amount;\r\n        balances[recipient] += amount;\r\n    }\r\n\r\n    // Withdraw ETH from the pool\r\n    function withdraw(uint256 amount) external {\r\n        require(balances[msg.sender] >= amount, \"Insufficient balance\");\r\n        balances[msg.sender] -= amount;\r\n        payable(msg.sender).transfer(amount);\r\n    }\r\n}\r\n"
+        }
+    ]
+}

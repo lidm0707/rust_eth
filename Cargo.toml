@@ -41,3 +41,14 @@ name = "deploy"
 path = "src/contract_deploy.rs"
 
 
+[[bin]]
+name = "t-swap"
+path ="src/test_swap.rs"
+
+
+[[bin]]
+name = "t-deploy"
+path ="src/test_deploy.rs"
+
+
+
