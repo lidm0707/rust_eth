@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 24,
+            "activePatchIndex": 31,
             "patches": [
                 {
                     "date": 1732294800843,
@@ -104,6 +104,34 @@
                 {
                     "date": 1733406783679,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n-// process on s\r\n+// process on auto test\r\n"
+                },
+                {
+                    "date": 1733407012841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,8 @@\n npm install -g solc\r\n npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol\r\n \r\n \r\n-\r\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n"
+                },
+                {
+                    "date": 1733407021047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,11 @@\n {{start mock block chain}}\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n-\r\n {{handle contract}}\r\n npm install -g solc\r\n npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol\r\n \r\n-\r\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n"
+                },
+                {
+                    "date": 1733407064684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{start mock block chain}}\r\n+start mock block chain\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n"
+                },
+                {
+                    "date": 1733407080585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+\r\n+# File with heading\r\n start mock block chain\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n {{handle contract}}\r\n"
+                },
+                {
+                    "date": 1733407087649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n \r\n # File with heading\r\n+\r\n start mock block chain\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n {{handle contract}}\r\n"
+                },
+                {
+                    "date": 1733407093190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n \r\n # File with heading\r\n \r\n-start mock block chain\r\n+\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n"
+                },
+                {
+                    "date": 1733407098855,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n \r\n-# File with heading\r\n+# start mock block chain\r\n \r\n-\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n"
                 }
             ],
             "date": 1732294800843,
