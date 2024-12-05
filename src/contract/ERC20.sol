@@ -1,40 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
-
-abstract contract IERC20 {
-    // Events ตามมาตรฐาน ERC-20
-    event Transfer(address indexed _from, address indexed _to, uint256 _value);
-    event Approval(
-        address indexed _owner,
-        address indexed _spender,
-        uint256 _value
-    );
-
-    // ฟังก์ชัน ERC-20 มาตรฐาน
-    function name() external view virtual returns (string memory);
-    function symbol() external view virtual returns (string memory);
-    function decimals() external view virtual returns (uint8);
-    function totalSupply() external view virtual returns (uint256);
-    function balanceOf(address account) external view virtual returns (uint256);
-
-    function transfer(
-        address recipient,
-        uint256 amount
-    ) public virtual returns (bool);
-    function approve(
-        address spender,
-        uint256 amount
-    ) public virtual returns (bool);
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) public virtual returns (bool);
-    function allowance(
-        address owner,
-        address spender
-    ) public view virtual returns (uint256);
-}
+import "./IER20.sol";
 
 abstract contract ERC20 is IERC20 {
     string _name;

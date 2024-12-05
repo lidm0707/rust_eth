@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 19,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1732294800843,
@@ -84,6 +84,26 @@
                 {
                     "date": 1733389969530,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,7 +9,7 @@\n \r\n \r\n {{Note}}\r\n // I finish deploy\r\n-\r\n+// created coin\r\n // can't swap / and pair coin\r\n // Idk gow to build contract in rust \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733406737196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,15 @@\n+{{start mock block chain}}\r\n+ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n+\r\n+\r\n+{{handle contract}}\r\n+npm install -g solc\r\n+npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol\r\n+\r\n+\r\n+\r\n+{{Note}}\r\n+// I finish deploy\r\n+// created coin\r\n+// can't swap and pair coin\r\n+// Idk gow to build contract in rust \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733406742684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,21 +10,5 @@\n \r\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n-// can't swap and pair coin\r\n-// Idk gow to build contract in rust \n-{{start mock block chain}}\r\n-ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n-\r\n-\r\n-{{handle contract}}\r\n-npm install -g solc\r\n-npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol\r\n-\r\n-\r\n-\r\n-{{Note}}\r\n-// I finish deploy\r\n-// created coin\r\n-// can't swap / and pair coin\r\n-// Idk gow to build contract in rust \n\\ No newline at end of file\n+// swap and pair coin\r\n"
+                },
+                {
+                    "date": 1733406748029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,5 @@\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n+// pro\r\n"
+                },
+                {
+                    "date": 1733406754141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n-// pro\r\n+// process on s\r\n"
+                },
+                {
+                    "date": 1733406783679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n-// process on s\r\n+// process on auto test\r\n"
                 }
             ],
             "date": 1732294800843,

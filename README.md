@@ -11,5 +11,5 @@ npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol
 {{Note}}
 // I finish deploy
 // created coin
-// can't swap / and pair coin
-// Idk gow to build contract in rust 
+// swap and pair coin
+// process on auto test

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 85,
+            "activePatchIndex": 86,
             "patches": [
                 {
                     "date": 1733067303549,
@@ -348,6 +348,10 @@
                 {
                     "date": 1733156413502,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         .await?;\r\n     println!(\"Deposit transaction hash: {:?}\", tx.tx_hash());\r\n \r\n     // 2. Swap balances\r\n-    let recipient: Address = \"0xRecipientAddress\".parse()?;\r\n+    let recipient: Address = \"0x83b0b2Db521f68217D3A4ee04e3492c8D9cA239A \".parse()?;\r\n     let swap_amount = U256::from(500_000_000_000_000_000u64); // 0.5 ETH in Wei\r\n     let binding = swap_pool\r\n         .swap(recipient, swap_amount);\r\n     let tx = binding\r\n"
+                },
+                {
+                    "date": 1733405505834,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,55 @@\n+use ethers::prelude::*;\r\n+use std::convert::TryFrom;\r\n+use std::sync::Arc;\r\n+// // use dotenv::dotenv;\r\n+\r\n+abigen!(\r\n+    SwapPool,\r\n+    \"./src/build/SwapPool.json\" // Path to the ABI file\r\n+);\r\n+\r\n+#[tokio::main]\r\n+async fn main() -> eyre::Result<()> {\r\n+\r\n+    // Set up the provider and wallet\r\n+    let provider = Provider::<Http>::try_from(\"http://127.0.0.1:8545\")?;\r\n+    let wallet: LocalWallet = \"0x370b655fbd7677d37190504eb3231a976adf2bc6e229b7b8fdf8d2339bf0bd63\".parse()?;\r\n+    let chain_id = 1337u64; // Set to your local test network's chain ID (e.g., 1337 for Ganache)\r\n+    let wallet = wallet.with_chain_id(chain_id);\r\n+    let client = Arc::new(SignerMiddleware::new(provider, wallet));\r\n+\r\n+    // Address of the deployed SwapPool contract\r\n+    let contract_address: Address = \"0x2afd9dbb6363f0fdf44b43c28f38ef5e42a556eb\".parse()?;\r\n+    let swap_pool = SwapPool::new(contract_address, client.clone());\r\n+\r\n+    // 1. Deposit ETH\r\n+    let deposit_amount = U256::from(1_000_000_000_000_000_000u64); // 1 ETH in Wei\r\n+    let binding = swap_pool\r\n+        .deposit()\r\n+        .value(deposit_amount);\r\n+    let tx = binding\r\n+        .send()\r\n+        .await?;\r\n+    println!(\"Deposit transaction hash: {:?}\", tx.tx_hash());\r\n+\r\n+    // 2. Swap balances\r\n+    let recipient: Address = \"0x83b0b2Db521f68217D3A4ee04e3492c8D9cA239A\".parse()?;\r\n+    let swap_amount = U256::from(500_000_000_000_000_000u64); // 0.5 ETH in Wei\r\n+    let binding = swap_pool\r\n+        .swap(recipient, swap_amount);\r\n+    let tx = binding\r\n+        .send()\r\n+        .await?;\r\n+    println!(\"Swap transaction hash: {:?}\", tx.tx_hash());\r\n+\r\n+    // 3. Withdraw ETH\r\n+    let withdraw_amount = U256::from(500_000_000_000_000_000u64); // 0.5 ETH in Wei\r\n+    let binding = swap_pool\r\n+        .withdraw(withdraw_amount);\r\n+    let tx = binding\r\n+        .send()\r\n+        .await?;\r\n+    println!(\"Withdraw transaction hash: {:?}\", tx.tx_hash());\r\n+\r\n+    Ok(())\r\n+}\r\n"
                 }
             ],
             "date": 1733067303549,
