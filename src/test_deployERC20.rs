@@ -19,9 +19,10 @@ fn load_file(path: &str) -> String {
 async fn main() -> eyre::Result<()> {
     // Load ABI and Bytecode
     // focus on taget floder
-    let abi = load_file("./src/build/src_sol_SwapPool_sol_SwapPool.abi");
-    let bytecode = load_file("./src/build/src_sol_SwapPool_sol_SwapPool.bin");
-    
+    let abi = load_file("./src/build/src_contract_ERC20_sol_MooCoin.abi");
+    let bytecode = load_file("./src/build/src_contract_ERC20_sol_MooCoin.bin");
+
+
     // Connect to Ethereum node
     let provider = Provider::<Http>::try_from(GANACHE_URL)?;
     let chain_id = provider.get_chainid().await?;

@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 17,
             "patches": [
                 {
                     "date": 1732294800843,
@@ -60,6 +60,22 @@
                 {
                     "date": 1733069856548,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-{{start nock block chain}}\r\n+{{start ทock block chain}}\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n \r\n {{handle contract}}\r\n@@ -7,7 +7,7 @@\n npx solc --bin --abi --optimize -o src/build SwapPool.sol\r\n \r\n \r\n \r\n-{{handle contract}}\r\n+{{Note}}\r\n // I finish deploy\r\n // can't swap / and pair coin\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733238441958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n-{{start ทock block chain}}\r\n+{{start mock block chain}}\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n-npx solc --bin --abi --optimize -o src/build SwapPool.sol\r\n+npx solc --bin --abi --optimize -p -o src/build ./src/sol/SwapPool.sol\r\n \r\n \r\n \r\n {{Note}}\r\n"
+                },
+                {
+                    "date": 1733239240705,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n-npx solc --bin --abi --optimize -p -o src/build ./src/sol/SwapPool.sol\r\n+npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol\r\n \r\n \r\n \r\n {{Note}}\r\n"
+                },
+                {
+                    "date": 1733292901514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,6 @@\n \r\n \r\n {{Note}}\r\n // I finish deploy\r\n-// can't swap / and pair coin\n\\ No newline at end of file\n+// can't swap / and pair coin\r\n+// Idk \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733292909958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,5 +10,5 @@\n \r\n {{Note}}\r\n // I finish deploy\r\n // can't swap / and pair coin\r\n-// Idk \n\\ No newline at end of file\n+// Idk gow to build contract in rust \n\\ No newline at end of file\n"
                 }
             ],
             "date": 1732294800843,

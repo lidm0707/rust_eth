@@ -4,10 +4,11 @@ ganache-cli -m "prison fence hidden critic decide disease velvet tool front pres
 
 {{handle contract}}
 npm install -g solc
-npx solc --bin --abi --optimize -o src/build SwapPool.sol
+npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol
 
 
 
 {{Note}}
 // I finish deploy
 // can't swap / and pair coin
+// Idk gow to build contract in rust 

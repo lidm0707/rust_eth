@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/test_deployERC20.rs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1733311097407,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1733311104470,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     // Load ABI and Bytecode\r\n     // focus on taget floder\r\n     let abi = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.abi\");\r\n     let bytecode = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.bin\");\r\n-    abigen!(ERC20Contract, \"./ct.json\",);\r\n+    abigen!(ERC20Contract, \"./src/build/\",);\r\n \r\n     // Connect to Ethereum node\r\n     let provider = Provider::<Http>::try_from(GANACHE_URL)?;\r\n     let chain_id = provider.get_chainid().await?;\r\n"
+                },
+                {
+                    "date": 1733311122485,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     // Load ABI and Bytecode\r\n     // focus on taget floder\r\n     let abi = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.abi\");\r\n     let bytecode = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.bin\");\r\n-    abigen!(ERC20Contract, \"./src/build/\",);\r\n+    abigen!(ERC20Contract, \"./src/build/src_contract_ERC20_sol_MooCoin.abi\",);\r\n \r\n     // Connect to Ethereum node\r\n     let provider = Provider::<Http>::try_from(GANACHE_URL)?;\r\n     let chain_id = provider.get_chainid().await?;\r\n"
+                },
+                {
+                    "date": 1733311163304,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,8 @@\n #[tokio::main]\r\n async fn main() -> eyre::Result<()> {\r\n     // Load ABI and Bytecode\r\n     // focus on taget floder\r\n-    let abi = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.abi\");\r\n     let bytecode = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.bin\");\r\n     abigen!(ERC20Contract, \"./src/build/src_contract_ERC20_sol_MooCoin.abi\",);\r\n \r\n     // Connect to Ethereum node\r\n"
+                },
+                {
+                    "date": 1733311169496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n     let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n     let client = Arc::new(SignerMiddleware::new(provider, wallet.with_chain_id(chain_id.as_u64())));\r\n \r\n     // Parse ABI and Bytecode\r\n-    let abi: Abi = serde_json::from_str(&abi)?;\r\n+    let abi: Abi = serde_json::from_str(&ERC20Contract)?;\r\n     let bytecode = Bytes::from(hex::decode(bytecode.trim())?);\r\n \r\n     // Deploy the contract\r\n     println!(\"Deploying contract...\");\r\n"
+                },
+                {
+                    "date": 1733311181022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n     let bytecode = Bytes::from(hex::decode(bytecode.trim())?);\r\n \r\n     // Deploy the contract\r\n     println!(\"Deploying contract...\");\r\n-    let factory = ContractFactory::new(abi, bytecode, client.clone());\r\n+    let factory = ContractFactory::new(ERC20Contract, bytecode, client.clone());\r\n     let deploy_tx = factory.deploy(())?; // Pass constructor args if needed\r\n     let contract = deploy_tx.send().await?;\r\n \r\n     println!(\"Contract deployed at: {:?}\", contract.address());\r\n"
+                },
+                {
+                    "date": 1733311187832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,8 @@\n     let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n     let client = Arc::new(SignerMiddleware::new(provider, wallet.with_chain_id(chain_id.as_u64())));\r\n \r\n     // Parse ABI and Bytecode\r\n-    let abi: Abi = serde_json::from_str(&ERC20Contract)?;\r\n     let bytecode = Bytes::from(hex::decode(bytecode.trim())?);\r\n \r\n     // Deploy the contract\r\n     println!(\"Deploying contract...\");\r\n"
+                },
+                {
+                    "date": 1733311198274,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n     let bytecode = Bytes::from(hex::decode(bytecode.trim())?);\r\n \r\n     // Deploy the contract\r\n     println!(\"Deploying contract...\");\r\n-    let factory = ContractFactory::new(ERC20Contract, bytecode, client.clone());\r\n+    let factory = ContractFactory::new(&ERC20Contract, bytecode, client.clone());\r\n     let deploy_tx = factory.deploy(())?; // Pass constructor args if needed\r\n     let contract = deploy_tx.send().await?;\r\n \r\n     println!(\"Contract deployed at: {:?}\", contract.address());\r\n"
+                },
+                {
+                    "date": 1733311222461,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n #[tokio::main]\r\n async fn main() -> eyre::Result<()> {\r\n     // Load ABI and Bytecode\r\n     // focus on taget floder\r\n+    let abi = load_file(\"./src/build/src_contract_ERC20_sol_MooCoin.abi\");\r\n     let bytecode = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.bin\");\r\n     abigen!(ERC20Contract, \"./src/build/src_contract_ERC20_sol_MooCoin.abi\",);\r\n \r\n     // Connect to Ethereum node\r\n@@ -31,13 +32,14 @@\n     let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n     let client = Arc::new(SignerMiddleware::new(provider, wallet.with_chain_id(chain_id.as_u64())));\r\n \r\n     // Parse ABI and Bytecode\r\n+    let abi: Abi = serde_json::from_str(&abi)?;\r\n     let bytecode = Bytes::from(hex::decode(bytecode.trim())?);\r\n \r\n     // Deploy the contract\r\n     println!(\"Deploying contract...\");\r\n-    let factory = ContractFactory::new(&ERC20Contract, bytecode, client.clone());\r\n+    let factory = ContractFactory::new(abi, bytecode, client.clone());\r\n     let deploy_tx = factory.deploy(())?; // Pass constructor args if needed\r\n     let contract = deploy_tx.send().await?;\r\n \r\n     println!(\"Contract deployed at: {:?}\", contract.address());\r\n"
+                },
+                {
+                    "date": 1733311232817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,11 +19,11 @@\n async fn main() -> eyre::Result<()> {\r\n     // Load ABI and Bytecode\r\n     // focus on taget floder\r\n     let abi = load_file(\"./src/build/src_contract_ERC20_sol_MooCoin.abi\");\r\n-    let bytecode = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.bin\");\r\n-    abigen!(ERC20Contract, \"./src/build/src_contract_ERC20_sol_MooCoin.abi\",);\r\n+    let bytecode = load_file(\"./src/build/src_contract_ERC20_sol_MooCoin.bin\");\r\n \r\n+\r\n     // Connect to Ethereum node\r\n     let provider = Provider::<Http>::try_from(GANACHE_URL)?;\r\n     let chain_id = provider.get_chainid().await?;\r\n     println!(\"Connected to chain ID: {}\", chain_id);\r\n"
+                }
+            ],
+            "date": 1733311097407,
+            "name": "Commit-0",
+            "content": "use abi::Abi;\r\nuse ethers::{\r\n    prelude::*,\r\n    types::Bytes,\r\n};\r\nuse std::{convert::TryFrom, sync::Arc, fs::File, io::Read};\r\n\r\nconst GANACHE_URL: &str = \"http://127.0.0.1:8545\"; // RPC URL (local Ganache)\r\nconst PRIVATE_KEY: &str = \"0x370b655fbd7677d37190504eb3231a976adf2bc6e229b7b8fdf8d2339bf0bd63\";       // Replace with your private key\r\n\r\nfn load_file(path: &str) -> String {\r\n    let mut file = File::open(path).expect(\"Unable to open file\");\r\n    let mut content = String::new();\r\n    file.read_to_string(&mut content).expect(\"Unable to read file\");\r\n    content\r\n}\r\n\r\n#[tokio::main]\r\nasync fn main() -> eyre::Result<()> {\r\n    // Load ABI and Bytecode\r\n    // focus on taget floder\r\n    let abi = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.abi\");\r\n    let bytecode = load_file(\"./src/build/src_sol_SwapPool_sol_SwapPool.bin\");\r\n    abigen!(ERC20Contract, \"./ct.json\",);\r\n\r\n    // Connect to Ethereum node\r\n    let provider = Provider::<Http>::try_from(GANACHE_URL)?;\r\n    let chain_id = provider.get_chainid().await?;\r\n    println!(\"Connected to chain ID: {}\", chain_id);\r\n\r\n    // Create a wallet\r\n    let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n    let client = Arc::new(SignerMiddleware::new(provider, wallet.with_chain_id(chain_id.as_u64())));\r\n\r\n    // Parse ABI and Bytecode\r\n    let abi: Abi = serde_json::from_str(&abi)?;\r\n    let bytecode = Bytes::from(hex::decode(bytecode.trim())?);\r\n\r\n    // Deploy the contract\r\n    println!(\"Deploying contract...\");\r\n    let factory = ContractFactory::new(abi, bytecode, client.clone());\r\n    let deploy_tx = factory.deploy(())?; // Pass constructor args if needed\r\n    let contract = deploy_tx.send().await?;\r\n\r\n    println!(\"Contract deployed at: {:?}\", contract.address());\r\n\r\n    Ok(())\r\n}\r\n"
+        }
+    ]
+}

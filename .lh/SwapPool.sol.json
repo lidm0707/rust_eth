@@ -1,0 +1,18 @@
+{
+    "sourceFile": "SwapPool.sol",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1733155750083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1733155750083,
+            "name": "Commit-0",
+            "content": "use ethers::prelude::*;\r\nuse std::convert::TryFrom;\r\nuse std::sync::Arc;\r\nuse std::env;\r\nuse dotenv::dotenv;\r\n\r\nabigen!(\r\n    SwapPool,\r\n    \"./SwapPool.json\" // Path to the ABI file\r\n);\r\n\r\n#[tokio::main]\r\nasync fn main() -> eyre::Result<()> {\r\n    dotenv().ok(); // Load environment variables from .env file\r\n\r\n    // Set up the provider and wallet\r\n    let provider = Provider::<Http>::try_from(env::var(\"RPC_URL\")?)?;\r\n    let wallet: LocalWallet = env::var(\"PRIVATE_KEY\")?.parse()?;\r\n    let client = Arc::new(SignerMiddleware::new(provider, wallet));\r\n\r\n    // Address of the deployed SwapPool contract\r\n    let contract_address: Address = \"0xYourContractAddress\".parse()?;\r\n    let swap_pool = SwapPool::new(contract_address, client.clone());\r\n\r\n    // 1. Deposit ETH\r\n    let deposit_amount = U256::from(1_000_000_000_000_000_000u64); // 1 ETH in Wei\r\n    let tx = swap_pool\r\n        .deposit()\r\n        .value(deposit_amount)\r\n        .send()\r\n        .await?;\r\n    println!(\"Deposit transaction hash: {:?}\", tx.tx_hash());\r\n\r\n    // 2. Swap balances\r\n    let recipient: Address = \"0xRecipientAddress\".parse()?;\r\n    let swap_amount = U256::from(500_000_000_000_000_000u64); // 0.5 ETH in Wei\r\n    let tx = swap_pool\r\n        .swap(recipient, swap_amount)\r\n        .send()\r\n        .await?;\r\n    println!(\"Swap transaction hash: {:?}\", tx.tx_hash());\r\n\r\n    // 3. Withdraw ETH\r\n    let withdraw_amount = U256::from(500_000_000_000_000_000u64); // 0.5 ETH in Wei\r\n    let tx = swap_pool\r\n        .withdraw(withdraw_amount)\r\n        .send()\r\n        .await?;\r\n    println!(\"Withdraw transaction hash: {:?}\", tx.tx_hash());\r\n\r\n    Ok(())\r\n}\r\n"
+        }
+    ]
+}

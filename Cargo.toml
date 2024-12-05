@@ -51,4 +51,17 @@ name = "t-deploy"
 path ="src/test_deploy.rs"
 
 
+[[bin]]
+name = "t-derc20"
+path = "src/test_deployERC20.rs"
+
+[[bin]]
+name = "t-depositMOO"
+path = "src/test_depositMOO.rs"
+
+
+[[bin]]
+name = "t-balance"
+path = "src/test_balance.rs"
+
 
