@@ -37,7 +37,7 @@ async fn main() -> eyre::Result<()> {
 
     // Deploy the contract
     println!("Deploying contract...");
-    let factory = ContractFactory::new(abi, bytecode, client.clone());
+    let factory = ContractFactory::new(abi, bytecode, Arc::clone(&client));
     let deploy_tx = factory.deploy(())?; // Pass constructor args if needed
     let contract = deploy_tx.send().await?;
 
