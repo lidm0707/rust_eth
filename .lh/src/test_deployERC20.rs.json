@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 33,
+            "activePatchIndex": 35,
             "patches": [
                 {
                     "date": 1733311097407,
@@ -140,6 +140,14 @@
                 {
                     "date": 1733405186400,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n     let chain_id = Arc::clone(&provider).get_chainid().await?;\r\n     println!(\"Connected to chain ID: {}\", chain_id);\r\n     // Create a wallet\r\n     let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n-    let client = Arc::new(SignerMiddleware::new(Arc::clone(&provider), wallet.with_chain_id(chain_id.as_u64())));\r\n+    let client = Arc::new(SignerMiddleware::new(&provider), wallet.with_chain_id(chain_id.as_u64())));\r\n \r\n     // Parse ABI and Bytecode\r\n     let abi: Abi = serde_json::from_str(&abi)?;\r\n     let bytecode = Bytes::from(hex::decode(&bytecode.trim())?);\r\n"
+                },
+                {
+                    "date": 1733407119042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n use ethers::{\r\n     prelude::*,\r\n     types::Bytes,\r\n };\r\n-use std::{convert::TryFrom, fs::File, io::Read, rc::Rc, sync::Arc};\r\n+use std::{convert::TryFrom, fs::File, io::Read, sync::Arc};\r\n \r\n const GANACHE_URL:&str = \"http://127.0.0.1:8545\"; // RPC URL (local Ganache)\r\n const PRIVATE_KEY:&str= \"0x370b655fbd7677d37190504eb3231a976adf2bc6e229b7b8fdf8d2339bf0bd63\";       // Replace with your private key\r\n \r\n@@ -28,9 +28,9 @@\n     let chain_id = Arc::clone(&provider).get_chainid().await?;\r\n     println!(\"Connected to chain ID: {}\", chain_id);\r\n     // Create a wallet\r\n     let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n-    let client = Arc::new(SignerMiddleware::new(&provider), wallet.with_chain_id(chain_id.as_u64())));\r\n+    let client = Arc::new(SignerMiddleware::new(Arc::clone(&provider), wallet.with_chain_id(chain_id.as_u64())));\r\n \r\n     // Parse ABI and Bytecode\r\n     let abi: Abi = serde_json::from_str(&abi)?;\r\n     let bytecode = Bytes::from(hex::decode(&bytecode.trim())?);\r\n"
+                },
+                {
+                    "date": 1733407519247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,10 @@\n use abi::Abi;\r\n-use ethers::{\r\n-    prelude::*,\r\n-    types::Bytes,\r\n-};\r\n-use std::{convert::TryFrom, fs::File, io::Read, sync::Arc};\r\n+use ethers::{ prelude::*, types::Bytes };\r\n+use std::{ convert::TryFrom, fs::File, io::Read, sync::Arc };\r\n \r\n-const GANACHE_URL:&str = \"http://127.0.0.1:8545\"; // RPC URL (local Ganache)\r\n-const PRIVATE_KEY:&str= \"0x370b655fbd7677d37190504eb3231a976adf2bc6e229b7b8fdf8d2339bf0bd63\";       // Replace with your private key\r\n+const GANACHE_URL: &str = \"http://127.0.0.1:8545\"; // RPC URL (local Ganache)\r\n+const PRIVATE_KEY: &str = \"0x370b655fbd7677d37190504eb3231a976adf2bc6e229b7b8fdf8d2339bf0bd63\"; // Replace with your private key\r\n \r\n fn load_file(path: &str) -> String {\r\n     let mut file = File::open(path).expect(\"Unable to open file\");\r\n     let mut content = String::new();\r\n@@ -21,16 +18,17 @@\n     // focus on taget floder\r\n     let abi = load_file(\"./src/build/src_contract_ERC20_sol_MooCoin.abi\");\r\n     let bytecode = load_file(\"./src/build/src_contract_ERC20_sol_MooCoin.bin\");\r\n \r\n-\r\n     // Connect to Ethereum node\r\n     let provider = Arc::new(Provider::<Http>::try_from(GANACHE_URL)?);\r\n     let chain_id = Arc::clone(&provider).get_chainid().await?;\r\n     println!(\"Connected to chain ID: {}\", chain_id);\r\n     // Create a wallet\r\n     let wallet: LocalWallet = PRIVATE_KEY.parse()?;\r\n-    let client = Arc::new(SignerMiddleware::new(Arc::clone(&provider), wallet.with_chain_id(chain_id.as_u64())));\r\n+    let client = Arc::new(\r\n+        SignerMiddleware::new(Arc::clone(&provider), wallet.with_chain_id(chain_id.as_u64()))\r\n+    );\r\n \r\n     // Parse ABI and Bytecode\r\n     let abi: Abi = serde_json::from_str(&abi)?;\r\n     let bytecode = Bytes::from(hex::decode(&bytecode.trim())?);\r\n"
                 }
             ],
             "date": 1733311097407,

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
-import "./IER20.sol";
+import "./IERC20.sol";
 
 abstract contract ERC20 is IERC20 {
     string _name;
@@ -108,7 +108,7 @@ abstract contract ERC20 is IERC20 {
 
     function _burn(address from, uint256 amount) internal {
         require(from != address(0), "burn zero address");
-        require(amount <= _balance[from],"burn amount exceeds balance");
+        require(amount <= _balance[from], "burn amount exceeds balance");
 
         _balance[from] -= amount;
         _totalSupply -= amount;
@@ -116,23 +116,22 @@ abstract contract ERC20 is IERC20 {
     }
 }
 
-
 // use contract nameCOIN is ERC20{}
 
 contract MooCoin is ERC20 {
-    constructor() ERC20("MooCoin","moo") {
+    constructor() ERC20("MooCoin", "moo") {}
 
+    function deposit() public payable {
+        require(msg.value > 0, "amount is zero");
+        _mint(msg.sender, msg.value);
     }
 
-    function deposit() public payable{
-        require(msg.value > 0 , "amount is zero");
-        _mint(msg.sender,msg.value);
-    }
-
-    function  withdraw(uint256 amount) public{
-        require(amount > 0 && amount <= _balance[msg.sender],"withdraw amount is zero");
+    function withdraw(uint256 amount) public {
+        require(
+            amount > 0 && amount <= _balance[msg.sender],
+            "withdraw amount is zero"
+        );
         payable(msg.sender).transfer(amount);
         _burn(msg.sender, amount);
-        
     }
 }

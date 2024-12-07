@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 19,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1733311385830,
@@ -84,6 +84,10 @@
                 {
                     "date": 1733315042727,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     let wallet = wallet.with_chain_id(chain_id);\r\n     let client = Arc::new(SignerMiddleware::new(provider, wallet));\r\n \r\n     // Address of the deployed SwapPool contract\r\n-    let contract_address: Address = \"0x7ac7d8344c7efc596aaebefd3047bb05bf5f73892374cee07492885fe6f02673\".parse()?;\r\n+    let contract_address: Address = \"0x2afd9dbb6363f0fdf44b43c28f38ef5e42a556eb\".parse()?;\r\n     let moocoin = MOOCOIN::new(contract_address, client.clone());\r\n \r\n     // 1. Deposit ETH\r\n     let mint_amount = U256::from(1_000_000_000_000_000_000u64); // 1 ETH in Wei\r\n"
+                },
+                {
+                    "date": 1733407535256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,31 @@\n+use ethers::prelude::*;\r\n+use std::convert::TryFrom;\r\n+use std::sync::Arc;\r\n+// // use dotenv::dotenv;\r\n+\r\n+#[tokio::main]\r\n+async fn main() -> eyre::Result<()> {\r\n+    abigen!(\r\n+        MOOCOIN,\r\n+        \"./src/build/src_contract_ERC20_sol_MooCoin.abi\" // Path to the ABI file\r\n+    );\r\n+    // Set up the provider and wallet\r\n+    let provider = Provider::<Http>::try_from(\"http://127.0.0.1:8545\")?;\r\n+    let wallet: LocalWallet =\r\n+        \"0x370b655fbd7677d37190504eb3231a976adf2bc6e229b7b8fdf8d2339bf0bd63\".parse()?;\r\n+    let chain_id = 1337u64; // Set to your local test network's chain ID (e.g., 1337 for Ganache)\r\n+    let wallet = wallet.with_chain_id(chain_id);\r\n+    let client = Arc::new(SignerMiddleware::new(provider, wallet));\r\n+\r\n+    // Address of the deployed SwapPool contract\r\n+    let contract_address: Address = \"0x2afd9dbb6363f0fdf44b43c28f38ef5e42a556eb\".parse()?;\r\n+    let moocoin = MOOCOIN::new(contract_address, client.clone());\r\n+\r\n+    // 1. Deposit ETH\r\n+    let mint_amount = U256::from(1_000_000_000_000_000_000u64); // 1 ETH in Wei\r\n+    let binding = moocoin.deposit().value(mint_amount);\r\n+    let tx = binding.send().await?;\r\n+    println!(\"Deposit transaction hash: {:?}\", tx.tx_hash());\r\n+\r\n+    Ok(())\r\n+}\r\n"
                 }
             ],
             "date": 1733311385830,
