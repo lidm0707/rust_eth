@@ -13,3 +13,13 @@ npx solc --bin --abi --optimize -p -o src/contract_build ./src/contract/SwapPool
 // created coin
 // swap and pair coin
 // process on auto test
+
+
+if eip1599 not actived 
+npm uninstall -g ganache-cli
+npm install -g ganache
+
+Chain
+==================
+Hardfork: shanghai
+Id:       1337

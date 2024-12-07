@@ -30,20 +30,9 @@ name = "eth"
 path = "src/bin/eth_gas_tracker.rs"
 
 
-
-[[bin]]
-name = "deploy"
-path = "src/bin/contract_deploy.rs"
-
-
 [[bin]]
 name = "t-swap"
 path ="src/bin/test_swap.rs"
-
-
-[[bin]]
-name = "t-deploy"
-path ="src//bintest_deploy.rs"
 
 
 [[bin]]

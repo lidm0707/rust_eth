@@ -22,7 +22,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let wallet_address: Address = "0x0a69428ed9206a87C09fF3b0B8FBaa464AAf4794".parse()?;
 
     // Load the ERC-20 ABI (Minimal ABI for balanceOf)
-    let mut file = File::open("./src/build/src_contract_ERC20_sol_MooCoin.abi").expect(
+    let mut file = File::open("./src/contract_build/src_contract_ERC20_sol_MooCoin.abi").expect(
         "Unable to open file"
     );
     let mut content = String::new();

@@ -16,8 +16,8 @@ fn load_file(path: &str) -> String {
 async fn main() -> eyre::Result<()> {
     // Load ABI and Bytecode
     // focus on taget floder
-    let abi = load_file("./src/build/src_contract_ERC20_sol_MooCoin.abi");
-    let bytecode = load_file("./src/build/src_contract_ERC20_sol_MooCoin.bin");
+    let abi = load_file("./src/contract_build/src_contract_ERC20_sol_MooCoin.abi");
+    let bytecode = load_file("./src/contract_build/src_contract_ERC20_sol_MooCoin.bin");
 
     // Connect to Ethereum node
     let provider = Arc::new(Provider::<Http>::try_from(GANACHE_URL)?);
