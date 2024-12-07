@@ -3,16 +3,21 @@ name = "rust_eth"
 version = "0.1.0"
 edition = "2021"
 
-[dependencies]
 
+default-run = "rust_eth"  # Replace with the name of your desired binary
+
+
+[dependencies]
 ethers = { version = "2.0", features = ["rustls","abigen"] }
-tokio = { version = "1", features = ["full"] }
+tokio = { version = "1.42.0", features = ["full"] }
 dotenv = "0.15.0"
-anyhow = "1.0.93"
+anyhow = "1.0.94"
 eyre = "0.6"
 hex = "0.4"
 reqwest = { version = "0.12.9", features = ["json"] }
 serde_json = "1.0.133"
+which = "7.0.0"
+
 
 [[bin]]
 name = "transact"
@@ -21,47 +26,42 @@ path = "src/simple_transaction.rs"
 
 
 [[bin]]
-name = "op"
-path = "src/op_gas_tracker.rs"
-
-[[bin]]
-name = "op_1599"
-path = "src/op_gas_eip1599.rs"
-
-
-
-[[bin]]
 name = "eth"
-path = "src/eth_gas_tracker.rs"
+path = "src/bin/eth_gas_tracker.rs"
 
 
 
 [[bin]]
 name = "deploy"
-path = "src/contract_deploy.rs"
+path = "src/bin/contract_deploy.rs"
 
 
 [[bin]]
 name = "t-swap"
-path ="src/test_swap.rs"
+path ="src/bin/test_swap.rs"
 
 
 [[bin]]
 name = "t-deploy"
-path ="src/test_deploy.rs"
+path ="src//bintest_deploy.rs"
 
 
 [[bin]]
 name = "t-derc20"
-path = "src/test_deployERC20.rs"
+path = "src/bin/test_deployERC20.rs"
 
 [[bin]]
 name = "t-depositMOO"
-path = "src/test_depositMOO.rs"
+path = "src/bin/test_depositMOO.rs"
 
 
 [[bin]]
 name = "t-balance"
-path = "src/test_balance.rs"
+path = "src/bin/test_balance.rs"
+
+
+[[bin]]
+name = "block"
+path = "src/bin/block.rs"
 
 

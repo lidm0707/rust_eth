@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 31,
+            "activePatchIndex": 34,
             "patches": [
                 {
                     "date": 1732294800843,
@@ -132,6 +132,18 @@
                 {
                     "date": 1733407098855,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n \r\n-# File with heading\r\n+# start mock block chain\r\n \r\n-\r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n"
+                },
+                {
+                    "date": 1733452863091,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,4 +11,5 @@\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n // process on auto test\r\n+\r\n"
+                },
+                {
+                    "date": 1733452874229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,6 +10,5 @@\n {{Note}}\r\n // I finish deploy\r\n // created coin\r\n // swap and pair coin\r\n-// process on auto test\r\n-\r\n+// process on auto test \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1733452880221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n \r\n # start mock block chain\r\n \r\n ganache-cli -m \"prison fence hidden critic decide disease velvet tool front present dose labor\"\r\n-use\r\n+use \r\n \r\n {{handle contract}}\r\n npm install -g solc\r\n npx solc --bin --abi --optimize -p -o src/build ./src/contract/SwapPool.sol\r\n"
                 }
             ],
             "date": 1732294800843,

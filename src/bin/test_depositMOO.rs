@@ -3,11 +3,8 @@ use std::convert::TryFrom;
 use std::sync::Arc;
 // // use dotenv::dotenv;
 
-
-
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
-
     abigen!(
         MOOCOIN,
         "./src/build/src_contract_ERC20_sol_MooCoin.abi" // Path to the ABI file
@@ -29,8 +26,6 @@ async fn main() -> eyre::Result<()> {
     let binding = moocoin.deposit().value(mint_amount);
     let tx = binding.send().await?;
     println!("Deposit transaction hash: {:?}", tx.tx_hash());
-
-
 
     Ok(())
 }

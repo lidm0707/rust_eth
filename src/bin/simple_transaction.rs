@@ -3,19 +3,20 @@
 #![allow(unused_imports)]
 use ethers::{
     middleware::gas_oracle::GasCategory,
-    prelude::{Address, LocalWallet, Middleware, Provider, Signer, TransactionRequest, U256},
+    prelude::{ Address, LocalWallet, Middleware, Provider, Signer, TransactionRequest, U256 },
     signers::Wallet,
     types::transaction::eip2718::TypedTransaction,
     utils::Ganache,
 };
-use eyre::{ContextCompat, Result};
+use eyre::{ ContextCompat, Result };
 use hex::ToHex;
-use std::{convert::TryFrom, time::Duration};
+use std::{ convert::TryFrom, time::Duration };
 #[allow(dead_code)]
 #[tokio::main]
 async fn main() -> Result<()> {
-    let provider =
-        Provider::try_from("http://localhost:8545/")?.interval(Duration::from_millis(10));
+    let provider = Provider::try_from("http://localhost:8545/")?.interval(
+        Duration::from_millis(10)
+    );
 
     // Check balance of another address
     let first_address = "0xd03b147131d42651AEdD21687B82B231349013d3".parse::<Address>()?;
@@ -28,8 +29,9 @@ async fn main() -> Result<()> {
     );
 
     // Create a transaction to transfer 1000 wei to `other_address`
-    let tx: TransactionRequest =
-        TransactionRequest::pay(other_address, U256::from(1000u64)).from(first_address);
+    let tx: TransactionRequest = TransactionRequest::pay(other_address, U256::from(1000u64)).from(
+        first_address
+    );
     let gas_price = provider.get_gas_price().await?;
     println!("Estimated gas price: {:?}", gas_price);
     let type_tran = TypedTransaction::Legacy(tx.clone());
@@ -38,19 +40,14 @@ async fn main() -> Result<()> {
 
     // Send the transaction and wait for receipt
     let receipt = provider
-        .send_transaction(tx.clone(), None)
-        .await?
-        .log_msg("Pending transfer")
-        .await?
+        .send_transaction(tx.clone(), None).await?
+        .log_msg("Pending transfer").await?
         .context("Missing receipt")?;
     let gas = &tx.gas_price;
 
     println!("TX Gas {:?}", gas);
 
-    println!(
-        "TX mined in block {}",
-        receipt.block_number.context("Can not get block number")?
-    );
+    println!("TX mined in block {}", receipt.block_number.context("Can not get block number")?);
     println!(
         "Balance of {} {}",
         other_address,
