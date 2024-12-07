@@ -7,7 +7,7 @@ use std::sync::Arc;
 async fn main() -> eyre::Result<()> {
     abigen!(
         MOOCOIN,
-        "./src/build/src_contract_ERC20_sol_MooCoin.abi" // Path to the ABI file
+        "./src/contract_build/src_contract_ERC20_sol_MooCoin.abi" // Path to the ABI file
     );
     // Set up the provider and wallet
     let provider = Provider::<Http>::try_from("http://127.0.0.1:8545")?;
