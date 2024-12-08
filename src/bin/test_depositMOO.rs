@@ -24,7 +24,7 @@ async fn main() -> Result<(), anyhow::Error> {
     let json = load_file("./src/contract_build/src_contract_ERC20_sol_MooCoin.abi");
     let mint_amount = U256::from(1_000_000_000_000_000_000u64); // 1 ETH in Wei
 
-    let _ = use_contract(Arc::clone(&provider), chain_id, from.clone(), to, &json, Deposit, mint_amount).await?;
-    let _ = use_contract(provider, chain_id, from, to, &json, Balance, U256::from(0u64)).await?;
+    let _ = use_contract(Arc::clone(&provider), chain_id, &from, to, &json, &Deposit, mint_amount).await?;
+    let _ = use_contract(provider, chain_id, &from, to, &json, &Balance, U256::from(0u64)).await?;
     Ok(())
 }

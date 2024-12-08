@@ -23,10 +23,10 @@ impl MethodContract {
 pub async fn use_contract(
     provider: Arc<Provider<Http>>,
     chain_id: u64,
-    from: LocalWallet,
+    from: &LocalWallet,
     to: Address,
     json: &str,
-    method: MethodContract,
+    method: &MethodContract,
     amount: U256
 ) -> Result<(), anyhow::Error> {
     println!("Start {}", method.as_str());
