@@ -29,8 +29,8 @@ use git bash find path => where ganache-cli
 
 
 ## something broken
+if eip1599 not actived 
 ```
- if eip1599 not actived 
  npm uninstall -g ganache-cli
  npm install -g ganache
 ```
