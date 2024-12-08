@@ -20,12 +20,6 @@ which = "7.0.0"
 
 
 [[bin]]
-name = "transact"
-path = "src/simple_transaction.rs"
-
-
-
-[[bin]]
 name = "eth"
 path = "src/bin/eth_gas_tracker.rs"
 
@@ -43,10 +37,6 @@ path = "src/bin/test_deployERC20.rs"
 name = "t-depositMOO"
 path = "src/bin/test_depositMOO.rs"
 
-
-[[bin]]
-name = "t-balance"
-path = "src/bin/test_balance.rs"
 
 
 [[bin]]
