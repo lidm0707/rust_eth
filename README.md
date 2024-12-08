@@ -7,9 +7,9 @@
 # stard
 1. cargo run --bin block
 > run mock chain in http://127.0.0.1:8545
-2. cargo run --t-derc20
+2. cargo run --bin t-derc20
 > deploy coin on chain
-3. cargo run --t-depositMOO
+3. cargo run --bin t-depositMOO
 > deposit eth to moo coin for mint
 
 ## Note
