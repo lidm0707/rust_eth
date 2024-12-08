@@ -36,11 +36,11 @@ pub async fn use_contract(
         eprintln!("Error parsing ABI: {:?}", e);
         anyhow::anyhow!("Failed to parse ABI")
     })?;
-
     // ตั้งค่า Wallet
+    let form_adrr = from.clone().address();
     let wallet = from.clone().with_chain_id(chain_id);
     let client = Arc::new(SignerMiddleware::new(Arc::clone(&provider), wallet));
-
+    //
     // สร้าง Contract Instance
     let contract = Contract::new(to, abi, Arc::clone(&client));
 
@@ -62,10 +62,10 @@ pub async fn use_contract(
         }
         MethodContract::Balance => {
             let balance: U256 = contract
-                .method::<Address, U256>(&method.as_str(), from.clone().address())?
+                .method::<Address, U256>(&method.as_str(), form_adrr)?
                 .call().await?;
             println!("Balance retrieved successfully: {:?}", balance);
-            println!("Balance Eth {:?}",Arc::clone(&provider).get_balance(from.address(), None).await?);
+            println!("Balance Eth {:?}",Arc::clone(&provider).get_balance(form_adrr, None).await?);
         }
     }
     Ok(())
