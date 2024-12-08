@@ -1,9 +1,7 @@
 
 # setup
 1. install node
-2. npm install -g solc
-3. npx solc --bin --abi --optimize -p -o src/contract_build ./src/contract/SwapPool.sol
-4. npm i -g ganache-cli
+2. npm i -g ganache-cli
 
 
 # stard
@@ -36,3 +34,7 @@ use git bash find path => where ganache-cli
  npm uninstall -g ganache-cli
  npm install -g ganache
 ```
+
+## build contract
+1. npm install -g solc
+2. npx solc --bin --abi --optimize -p -o src/contract_build ./src/contract/SwapPool.sol
